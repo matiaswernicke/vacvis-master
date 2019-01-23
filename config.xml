@@ -18,6 +18,7 @@
 
 
     <!-- Customize your app and platform with the preference element. -->
+    <preference name="android-minSdkVersion" value="19" /> <!-- Matias 20190123 -->
     <preference name="phonegap-version" value="cli-8.0.0" />          <!-- all: current version of PhoneGap -->
     <preference name="orientation"                value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
