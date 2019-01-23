@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="viewport-fit=cover, initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title>Perfil</title>
+  <script src="scripts/sections/css.js"></script>
+</head>
+<body>
+
+    <main class="wrapkit-wrapper" id="wrapper">
+    <!-- ============================================
+    HEADER SECTION
+    =============================================== -->
+    <!-- navigation -->
+    <script src="scripts/sections/menu.js"></script>
+
+
+
+    <!-- ============================================
+    MAIN CONTENT SECTION
+    =============================================== -->
+    <section class="content-wrapper" role="main" data-init-content="true">
+      <div class="content">
+        <!-- /.content-hero -->
+<div class="panel fade in panel-default" data-init-panel="true">
+                <div class="embed-responsive embed-responsive-16by9 corner-top">
+                  <img class="embed-responsive-item" src="images/dummy/people5.jpg" alt="cover">
+                  <div class="embed-overlay bg-grd-dark"></div>
+                </div><!-- /.embed -->
+
+                <div class="embed-extend-item">
+                  <a href="#" class="kit-avatar kit-avatar-96 border-white pull-left">
+                    <img src="images/img/doctor.svg" alt="avatar">
+                  </a>
+                  <h3 class="subhead" id="m-name"></h3>
+                </div><!-- /.kit-cover-headline -->
+
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-xs-4 bordered-right">
+                      <h5 class="text-center"><small>TOTAL VISITAS SINCRONIZADAS</small><br><strong id="tot-vis"></strong></h5>
+                    </div><!-- /.cols -->
+                    <div class="col-xs-4 bordered-right">
+                      <h5 class="text-center"><small>VISITAS A SINCRONIZAR</small><br><strong id="tot-sync"></strong></h5>
+                    </div><!-- /.cols -->
+                    <div class="col-xs-4">
+                      <h5 class="text-center"><small>COMENTARIOS A SINCRONIZAR</small><br><strong id="tot-com"></strong></h5>
+                    </div><!-- /.cols -->
+                  </div><!-- /.row -->
+                </div><!-- /.panel-body -->
+              </div>
+
+        <!-- /.content-hero -->
+
+
+        <div class="content-body">
+
+          <!-- TIMELINE
+          ================================================== -->
+          <!-- /.timeline -->
+
+
+          <ul class="timeline">
+            <li class="timeline-item">
+
+              <div class="timeline-badge">
+                <a class="border-orange" rel="tooltip" data-container="body" href="#" title="" data-original-title="Post"></a>
+              </div>
+              <div class="timeline-panel panel fade in panel-default panel-fill" data-fill-color="true" data-init-panel="true">
+
+                <div class="panel fade in panel-default" data-init-panel="true">
+                <div class="panel-body">
+                  <div class="media">
+                    <div class="media-left">
+                      <span class="fa-stack fa-2x">
+                        <i class="fa fa-circle fa-stack-2x text-red"></i>
+                        <i class="fa fa fa-refresh fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </div>
+                    <div class="media-body">
+                      <h3 class="media-heading">VISITAS</h3>
+                      <p class="help-block" id="visitas-pendientes-progreso">...</p>
+                    </div><!-- /.media -body-->
+                  </div><!-- /.media -->
+                </div><!-- /.panel-body -->
+
+                <div class="progress progress-xs no-radius no-margin">
+                  <div id="visitas-pendientes-bar" class="progress-bar bg-grd-teal" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+                    <span class="sr-only">50% Completado</span>
+                  </div>
+                </div><!-- /.progress -->
+              </div>
+              <div id="visitas-pendientes">
+              </div>
+              </div><!-- /.timeline-panel -->
+            </li>
+            <li class="timeline-item">
+
+              <div class="timeline-badge">
+                <a class="border-orange" rel="tooltip" data-container="body" href="#" title="" data-original-title="Post"></a>
+              </div>
+              <div class="timeline-panel panel fade in panel-default panel-fill" data-fill-color="true" data-init-panel="true">
+
+                <div class="panel fade in panel-default" data-init-panel="true">
+                <div class="panel-body">
+                  <div class="media">
+                    <div class="media-left">
+                      <span class="fa-stack fa-2x">
+                        <i class="fa fa-circle fa-stack-2x text-red"></i>
+                        <i class="fa fa fa-refresh fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </div>
+                    <div class="media-body">
+                      <h3 class="media-heading">COMENTARIOS</h3>
+                      <p class="help-block" id="comentarios-pendientes-progreso">Progreso 50% - 3 de 6</p>
+                    </div><!-- /.media -body-->
+                  </div><!-- /.media -->
+                </div><!-- /.panel-body -->
+
+                <div class="progress progress-xs no-radius no-margin">
+                  <div id="comentarios-pendientes-bar" class="progress-bar bg-grd-teal" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+                    <span class="sr-only">50% Completado</span>
+                  </div>
+                </div><!-- /.progress -->
+              </div>
+              <div id="comentarios-pendientes">
+              </div>
+              </div><!-- /.timeline-panel -->
+            </li>
+            <!-- /.timeline-item -->
+          </ul><!-- /.timeline -->
+        </div><!-- /.content-body -->
+        <!-- Template Setups -->
+      </div>
+    </section><!-- /MAIN -->
+    <!-- ============================================
+    FOOTER SECTION
+    =============================================== -->
+    <script src="scripts/sections/footer.js"></script>
+
+  </main><!-- /#MAIN -->
+
+
+  <script src="scripts/sections/scripts.js"></script>
+  <script src="scripts/sections/perfil.js"></script>
+</body>
+
+<!-- Mirrored from stilearning.com/items/preview/wrapkit/1.2/page-timeline.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 18 Dec 2017 13:33:35 GMT -->
+</html>

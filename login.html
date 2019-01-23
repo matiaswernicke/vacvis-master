@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <!-- General Scripts-->
+    <meta charset="utf-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="viewport-fit=cover, initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Login</title>
+    <script src="scripts/sections/css.js"></script>
+</head>
+<body class="bg-grd-blue" style="min-width: 100vw; min-height: 100vh; position: absolute; top: 0px;left: 0px;">
+  <main class="signin-wrapper">
+    <div class="tab-content">
+      <p class="text-center p-4x">
+        <img src="images/logo/brand-text-color.png" alt="wrapkit" height="28px">
+      </p>
+      <div class="tab-pane fade in active" id="signin">
+        <form id="signinForm" action="#" role="form">
+          <input hidden name="grant_type" value="password" />
+          <p class="lead">Ingresa a tu cuenta </p>
+          <div class="form-group">
+            <div class="input-group input-group-in">
+              <span class="input-group-addon"><i class="icon-user"></i></span>
+              <input name="username" id="username" class="form-control" placeholder="Usuario">
+            </div>
+          </div><!-- /.form-group -->
+          <div class="form-group">
+            <div class="input-group input-group-in">
+              <span class="input-group-addon"><i class="icon-lock"></i></span>
+              <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña">
+            </div>
+          </div><!-- /.form-group -->
+          <div class="form-group clearfix">
+            <div class="animated-hue pull-right">
+              <button id="btnSignin" type="submit" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Ingresando" class="btn btn-primary" href="#">Iniciar</button>
+            </div>
+            <div class="nice-checkbox nice-checkbox-inline">
+              <input type="checkbox" name="keepSignin" id="keepSignin" checked="checked">
+              <label for="keepSignin">Recordarme </label>
+            </div>
+          </div><!-- /.form-group -->
+          <hr>
+          <p>¿Algún problema? <a data-toggle="modal" data-target="#modalPrueba" data-toggle="tab">Contáctanos</a></p>
+        </form><!-- /#signinForm -->
+      </div><!-- /.tab-pane -->
+    </div><!-- /.tab-content -->
+  </main><!--/#wrapper-->
+  <p class="signin-cr text-light">© 2017 Vacunar todos los derechos reservado.</p>
+
+
+  <!-- General Scripts-->
+  <script src="scripts/sections/scripts.js"></script>
+  <script src="scripts/functions/login.js"></script>
+</body>
+
+</html>

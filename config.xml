@@ -1,0 +1,97 @@
+﻿<?xml version='1.0' encoding='utf-8' ?>
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.VacVis"
+        android-versionCode="22"
+        version   = "1.0.6">
+
+    <name>Visitas medicas</name>
+
+    <description>
+        Visitas medicas, herramienta de consulta y control para Visitas medicas.
+    </description>
+
+    <author href="http://www.vacunar.com.ar" email="info@vacunar.com.ar">
+        Vacunar
+    </author>
+	<preference name="permissions"                value="none"/>
+
+
+    <!-- Customize your app and platform with the preference element. -->
+    <preference name="phonegap-version" value="cli-8.0.0" />          <!-- all: current version of PhoneGap -->
+    <preference name="orientation"                value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->
+    <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
+    <preference name="fullscreen"                 value="false" />           <!-- all: hides the status bar at the top of the screen -->
+    <preference name="webviewbounce"              value="true" />           <!-- ios: control whether the screen 'bounces' when scrolled beyond the top -->
+    <preference name="prerendered-icon"           value="true" />           <!-- ios: if icon is prerendered, iOS will not apply it's gloss to the app's icon on the user's home screen -->
+    <preference name="stay-in-webview"            value="false" />          <!-- ios: external links should open in the default browser, 'true' would use the webview the app lives in -->
+    <preference name="ios-statusbarstyle"         value="black-opaque" />   <!-- ios: black-translucent will appear black because the PhoneGap webview doesn't go beneath the status bar -->
+    <preference name="detect-data-types"          value="true" />           <!-- ios: controls whether data types (such as phone no. and dates) are automatically turned into links by the system -->
+    <preference name="exit-on-suspend"            value="false" />          <!-- ios: if set to true, app will terminate when home button is pressed -->
+    <preference name="show-splash-screen-spinner" value="true" />           <!-- ios: if set to false, the spinner won't appear on the splash screen during app loading -->
+    <preference name="auto-hide-splash-screen"    value="true" />           <!-- ios: if set to false, the splash screen must be hidden using a JavaScript API -->
+
+
+
+	<!-- GPS -->
+  <plugin name="cordova-plugin-mauron85-background-geolocation"/>
+	<!-- Core plugins 1.4.5 -->
+    <plugin name="cordova-plugin-googlemaps">
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyAN1MZhpJ6o5-tOABdfUurxrHapSvQO-70" />
+        <variable name="API_KEY_FOR_IOS" value="AIzaSyCLbJHW9Ira14XC1MWHxu5wlPTYrugAb1w" />
+        <variable name="LOCATION_WHEN_IN_USE_DESCRIPTION" value="My custom when in use message" />
+        <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="My custom always usage message" />
+    </plugin>
+    <gap:plugin name="cordova-plugin-whitelist" source="npm" />
+	<!-- Define app icon for each platform. -->
+	<icon src="img/icon.png" />
+  <splash src="img/splash.png"/>
+  <platform name="ios">
+    <icon src="img/res/icons/ios/icon-small.png" width="29" height="29"/>
+    <icon src="img/res/icons/ios/icon-small@2x.png" width="58" height="58"/>
+    <icon src="img/res/icons/ios/icon-40.png" width="40" height="40"/>
+    <icon src="img/res/icons/ios/icon-40@2x.png" width="80" height="80"/>
+    <icon src="img/res/icons/ios/icon-50.png" width="50" height="50"/>
+    <icon src="img/res/icons/ios/icon-50@2x.png" width="100" height="100"/>
+    <icon src="img/res/icons/ios/icon.png" width="57" height="57"/>
+    <icon src="img/res/icons/ios/icon@2x.png" width="114" height="114"/>
+    <icon src="img/res/icons/ios/icon-60.png" width="60" height="60"/>
+    <icon src="img/res/icons/ios/icon-60@2x.png" width="120" height="120"/>
+    <icon src="img/res/icons/ios/icon-60@3x.png" width="180" height="180"/>
+    <icon src="img/res/icons/ios/icon-72.png" width="72" height="72"/>
+    <icon src="img/res/icons/ios/icon-72@2x.png" width="144" height="144"/>
+    <icon src="img/res/icons/ios/icon-76.png" width="76" height="76"/>
+    <icon src="img/res/icons/ios/icon-76@2x.png" width="152" height="152"/>
+    <icon src="img/res/icons/ios/icon-167.png" width="167" height="167"/>
+    <icon src="img/res/icons/ios/icon-83.5@2x.png" width="167" height="167"/>
+    <icon src="img/res/icons/ios/icon-1024.png" width="1024" height="1024" />
+    <!--  Legacy portrait  -->
+    <splash src="img/res/screens/ios/Default~iphone.png" width="320" height="480"/>
+    <splash src="img/res/screens/ios/Default@2x~iphone.png" width="640" height="960"/>
+    <splash src="img/res/screens/ios/Default-Portrait~ipad.png" width="768" height="1024"/>
+    <splash src="img/res/screens/ios/Default-Portrait@2x~ipad.png" width="1536" height="2048"/>
+    <splash src="img/res/screens/ios/Default-568h@2x~iphone.png" width="640" height="1136"/>
+    <splash src="img/res/screens/ios/Default-667h.png" width="750" height="1334"/>
+    <splash src="img/res/screens/ios/Default-736h.png" width="1242" height="2208"/>
+  </platform>
+  <platform name="android">
+    <icon density="ldpi" src="img/res/icons/android/ldpi.png"/>
+    <icon density="mdpi" src="img/res/icons/android/mdpi.png"/>
+    <icon density="hdpi" src="img/res/icons/android/hdpi.png"/>
+    <icon density="xhdpi" src="img/res/icons/android/xhdpi.png"/>
+    <icon density="xxhdpi" src="img/res/icons/android/xxhdpi.png"/>
+    <icon density="xxxhdpi" src="img/res/icons/android/xxxhdpi.png"/>
+    <!--  Portrait  -->
+    <splash density="port-ldpi" src="img/res/screens/android/splash-port-ldpi.png"/>
+    <splash density="port-mdpi" src="img/res/screens/android/splash-port-mdpi.png"/>
+    <splash density="port-hdpi" src="img/res/screens/android/splash-port-hdpi.png"/>
+    <splash density="port-xhdpi" src="img/res/screens/android/splash-port-xhdpi.png"/>
+    <splash density="port-xxhdpi" src="img/res/screens/android/splash-port-xxhdpi.png"/>
+    <splash density="port-xxxhdpi" src="img/res/screens/android/splash-port-xxxhdpi.png"/>
+    <!--  Landscape  -->
+  </platform>
+
+
+    <access origin="*"/>
+
+</widget>

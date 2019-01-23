@@ -1,0 +1,164 @@
+Login
+=====
+{
+    "access_token": "tTtrRlVyMaUE3EjTVJKmkcoG68hs_uPQLDrsD2KthMTrTDLBSg3nq3KuqIu29n6kiIWT-EFO6sCaBxADc2NewaVo29jTlU8dXRZ9M2SY5cI8zoG0iDFLKq5kLQ0h4i3sqO_oTE3gSDsREs4MJEKKWDzsNh5d7gpUbiqFLjX5gVtbQHJZTgpfoIGoe39FRV9tgIL6z-oyIR3RAkTD3urxCRNN2xpEEfm7VpVZQMypIRhYqevA8aIYDjwaKWL73OHW4SZKMMX2-8I5_p8GHO93GuQp-DLlvGtNOFcyuzvx6AOTYpGkAp3jA-4T2khZIRhWzdbTGUSNT8csF_W2lgNeZkJsNeBQN7n4YQZRK47CtfAlRcEPtluaAI79as_9mqZFRrhYmfxlK-NtLS-jZk2RVNW2o6mHdf3jesU0go6r1L55a7nKfsls1lq_fYcT_lwOOJua21lpyeUt8u2mIlYOLzJBBJEre0-OBJQRfhYdw4I",
+    "token_type": "bearer",
+    "expires_in": 1209599,
+    "userName": "user@email.com",
+    ".issued": "Thu, 07 Jun 2018 17:07:59 GMT",
+    ".expires": "Thu, 21 Jun 2018 17:07:59 GMT",
+    "prestador_id": 1,
+    "prestador_name": "Aguilar Natalia",
+    "prestador_email": "user@email.com",
+    "prestador_alias": "Aguilar Natalia"
+}
+
+
+getpanties
+==========
+{
+    "Pagination": {
+        "items_per_page": 5,
+        "total_items": 2,
+        "current_page": 1,
+        "total_pages": 1
+    },
+    "Prestador": {
+        "id": 1,
+        "name": "Aguilar Natalia",
+        "lastname": null,
+        "dir": null,
+        "location": null,
+        "phone": null,
+        "dni": null,
+        "prestacion": "1",
+        "email": "user@email.com",
+        "alias": "Aguilar Natalia"
+    },
+    "Patients": [
+        {
+            "id": 1,
+            "caso_id": 1,
+            "os_id": 0,
+            "name": "YOLANDA",
+            "lastname": "STEGOVEC",
+            "dir": "Aguilar 2644",
+            "phone": "22333444",
+            "dni": "1144556677",
+            "prestaciones": [
+                {
+                    "prestador_id": 1,
+                    "paciente_id": 1,
+                    "prestacion_id": 2,
+                    "nombre": "NUTRI",
+                    "frecuencia": "Diaria",
+                    "fecha_inicio": "2018-04-26T00:00:00",
+                    "fecha_fin": "2018-07-11T23:59:59"
+                }
+            ],
+            "Visitas": [],
+            "geo": {
+                "latitud": "-34.571307",
+                "longitud": "-58.449015"
+            }
+        },
+        {
+            "id": 2,
+            "caso_id": 2,
+            "os_id": 0,
+            "name": "Cora Elida",
+            "lastname": "Zampini",
+            "dir": "Besares 4693",
+            "phone": "22555666",
+            "dni": "1177665544",
+            "prestaciones": [
+                {
+                    "prestador_id": 1,
+                    "paciente_id": 2,
+                    "prestacion_id": 1,
+                    "nombre": "ID",
+                    "frecuencia": "Mensual",
+                    "fecha_inicio": "2018-04-26T00:00:00",
+                    "fecha_fin": "2018-07-11T23:59:59"
+                },
+                {
+                    "prestador_id": 1,
+                    "paciente_id": 2,
+                    "prestacion_id": 2,
+                    "nombre": "NUTRI",
+                    "frecuencia": "Semanal",
+                    "fecha_inicio": "2018-04-26T00:00:00",
+                    "fecha_fin": "2018-07-11T23:59:59"
+                }
+            ],
+            "Visitas": [],
+            "geo": {
+                "latitud": "-34.554643",
+                "longitud": "-58.492383"
+            }
+        }
+    ]
+}
+
+get panties visit
+=================
+
+{
+    "Pagination": {
+        "items_per_page": 5,
+        "total_items": 1,
+        "current_page": 2,
+        "total_pages": 1
+    },
+    "Prestador": {
+        "id": 1,
+        "name": "Aguilar Natalia",
+        "lastname": null,
+        "dir": null,
+        "location": null,
+        "phone": null,
+        "dni": null,
+        "prestacion": "1",
+        "email": "user@email.com",
+        "alias": "Aguilar Natalia"
+    },
+    "Visits": []
+}
+
+get visit
+=========
+
+
+get patient
+============
+
+{
+    "id": 1,
+    "caso_id": 0,
+    "os_id": 0,
+    "name": "YOLANDA",
+    "lastname": "STEGOVEC",
+    "dir": "Aguilar 2644",
+    "phone": "22333444",
+    "dni": "1144556677",
+    "prestaciones": [],
+    "Visitas": [],
+    "geo": {
+        "latitud": "-34.571307",
+        "longitud": "-58.449015"
+    }
+}
+
+
+
+// Para dar de alta un paciente transitorios
+
+{
+    "nombre": "Claudio",
+    "apellido": "Franco",
+    "dni": "40345678",
+    "direccion": "512 7648",
+    "telefono": "2219998887",
+    "prestacion": "Columna",
+    "prestador_derivado_id": "Visita coordinada"
+}

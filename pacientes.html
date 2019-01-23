@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="viewport-fit=cover, initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title>Pacientes</title>
+  <script src="scripts/sections/css.js"></script>
+</head>
+
+<body>
+    <!--[if lt IE 9]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <main class="wrapkit-wrapper" id="wrapper">
+    <!-- ============================================
+    HEADER SECTION
+    =============================================== -->
+        <!-- navigation -->
+        <script src="scripts/sections/menu.js"></script>
+        <!-- /.SIDEBAR -->
+        <!-- ============================================
+    MAIN CONTENT SECTION
+    =============================================== -->
+        <section class="content-wrapper" role="main" data-init-content="true">
+            <div class="content">
+
+                <!-- /.content-bar -->
+
+                <div class="content-body">
+                    <!-- Result control -->
+                    <div class="panel fade in panel-default panel-fill" data-fill-color="true" data-init-panel="true">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="input-group input-group-in no-bg no-border">
+                                        <div class="input-group-addon no-padding pr-2x"><i class="icon-magnifier"></i></div>
+                                        <input id="search-box" class="form-control no-padding" placeholder="Buscar">
+                                    </div>
+                                </div>
+                                <!-- /.cols -->
+
+                                <!-- /.cols -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.panel-heading -->
+                    </div>
+                    <!-- /.panel -->
+
+                    <div class="search-result">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h2>Pacientes
+                                  <button class="btn btn-link" type="button" id="refreshPacients" data-loading-text="<i class='fa fa-refresh fa-spin '></i> <small>Cargando...</small>"><i class="fa fa-refresh"></i></button>
+                                  <button class="btn btn-link" type="button" id="addPacients" data-loading-text="<i class='fa fa-refresh fa-spin '></i> <small>Cargando...</small>"><i class="fa fa-plus"></i></button>
+                                  <div class="pull-right" role="group"><a onclick="openPacientsInMap();"><i class="fa fa-map-marker"></i></a></div>
+                                </h2>
+                                <div id="pacients-container">
+
+                                </div>
+                                <!-- /.panel -->
+                            </div>
+                            <!-- /.cols -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.search-result -->
+                </div>
+                <!-- /.content-body -->
+            </div>
+            <!-- /.content -->
+        </section>
+        <!-- /MAIN -->
+        <!-- ============================================
+    FOOTER SECTION
+    =============================================== -->
+        <script src="scripts/sections/footer.js"></script>
+        <!-- /.FOOTER -->
+
+    </main>
+    <!-- /#MAIN -->
+
+    <script src="scripts/sections/scripts.js"></script>
+    <script src="scripts/sections/pacientes.js"></script>
+</body>
+
+<!-- Mirrored from stilearning.com/items/preview/wrapkit/1.2/page-timeline.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 18 Dec 2017 13:33:35 GMT -->
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="viewport-fit=cover, initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <script src="scripts/sections/css.js"></script>
+  <script src="scripts/vendor.js"></script>
+  <title>Vacvis</title>
+</head>
+
+<body>
+  <body class="bg-grd-blue" style="min-width: 100vw; min-height: 100vh; position: absolute; top: 0px;left: 0px;" >
+    <main class="signin-wrapper">
+      <div class="tab-content">
+        <p class="text-center p-4x">
+          <img src="images/logo/brand-text-color.png" alt="wrapkit" height="28px">
+        </p>
+        <h1 class="text-center" style="margin: 50px 0px;"><i class="fa fa-spinner fa-spin"></i> cargando...</h1>
+      </div><!-- /.tab-content -->
+    </main><!--/#wrapper-->
+    <p class="signin-cr text-light">© 2018 Vacunar todos los derechos reservado.</p>
+  </body>
+    <script>
+	window.onload=setTimeout(function(){ start(); }, 500);
+	function start(){
+    var now=new Date();
+		var value = getCookie("user");
+    if(value==""){window.location="login.html"}
+    else{
+      try{
+        value=JSON.parse(value);
+        if(value.expires_in<now){
+          if(value.keepSignin.keepSignin==true){
+            login(value.keepSignin.datas);
+          }
+          else{window.location="login.html";}
+        }
+        else{
+          window.location="pacientes.html";
+        }
+      }catch(e){
+        window.location="login.html";
+      }
+    }
+	}
+  function login(datas){
+    var jqxhr = $.ajax({
+                    method: "POST",
+                    url: apiurl+'login',
+                    data: datas
+                  })
+                  .done(function(xhr) {
+                    var t = new Date();
+                    var expires_in = t.setSeconds(t.getSeconds() + xhr.expires_in);
+                    var token = xhr.token_type+" "+xhr.access_token;
+                    var userName= xhr.userName;
+                    var prestador_id= xhr.prestador_id;
+                    var prestador_name= xhr.prestador_name;
+                    var prestador_email= xhr.prestador_email;
+                    var prestador_alias= xhr.prestador_alias;
+                    var keepSignin = {"keepSignin":true,"datas":datas};
+                    var user=JSON.stringify({"expires_in":expires_in,"token":token,"userName":userName,"prestador_id":prestador_id,"prestador_name":prestador_name,"prestador_email":prestador_email,"prestador_alias":prestador_alias,"keepSignin":keepSignin});
+                    setCookie("user", user, 120);
+                    window.location="pacientes.html";
+                  })
+                  .fail(function(xhr) {
+                    window.location="login.html";
+                  });
+  }
+    </script>
+</body>
+</html>

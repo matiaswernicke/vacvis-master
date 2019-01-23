@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="viewport-fit=cover, initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title>Paciente</title>
+  <script src="scripts/sections/css.js"></script>
+</head>
+<body>
+    <main class="wrapkit-wrapper" id="wrapper">
+
+    <script src="scripts/sections/menu.js"></script>
+
+    <!-- ============================================
+    MAIN CONTENT SECTION
+    =============================================== -->
+    <section class="content-wrapper" role="main" data-init-content="true">
+      <div class="content">
+        <!-- /.content-hero -->
+        <div class="content-hero content-hero-lg">
+          <img class="content-hero-embed" src="images/dummy/people4.jpg" alt="cover">
+          <div class="content-hero-overlay bg-grd-blue"></div>
+          <div class="content-hero-body">
+          </div>
+          <div class="content-hero-bar">
+            <div class="row">
+              <button class="btn btn-link reload_paciente" type="button" id="refreshPacient" data-loading-text="<i class='fa fa-refresh fa-2x fa-spin '></i>"><i class="fa fa-refresh fa-2x"></i></button>
+              <div class="col-lg-6" id="paciente-datos">
+                <div class="panel fade in panel-default" data-init-panel="true" style="background: gainsboro;" id="pcloader">
+                  <div class="panel-body">
+                    <div class="search-result-item">
+                      <p class="text-center"><strong><i class="fa fa-spinner fa-spin fa-4x"></i></strong></p>
+                    </div>        <!-- /.search-result-item -->
+                  </div>    <!-- /.panel-body -->
+                </div>
+              </div><!-- /.cols -->
+              <!-- /.cols -->
+            </div><!-- /.row -->
+          </div><!-- /.content-hero-bar -->
+        </div>
+        <div class="content-body">
+          <!-- TIMELINE  ================================================== -->
+          <!-- /.timeline -->
+          <ul class="timeline">
+            <li class="timeline-item timeline-poster">
+              <div class="timeline-badge">
+                <a class="border-teal" rel="tooltip" title="" data-container="body" href="#"></a>
+              </div>
+              <div class="timeline-panel panel fade in panel-info panel-fill" data-fill-color="true" data-init-panel="true">
+                <div class="panel-heading">
+                  <div class="form-group">
+                      <label>Seleccionar prestaciones a realizar</label><br>
+                      <div id="prestaciones-realizar">
+                        <i class="fa fa-spinner fa-spin"></i>
+                      </div>
+                  </div>
+                </div>
+                <div class="panel-body">
+                  <div class="tab-content pt-1x">
+                    <textarea id="textComentario" name="timelinePost" rows="6" class="form-control autogrow no-border no-resize" placeholder="Agregar un detalle" style="overflow: hidden; min-height: 6em; height: 52px;"></textarea><div class="autogrow-textarea-mirror" style="display: none; word-wrap: break-word; white-space: normal; padding: 6px 12px; width: 91px; font-family: &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px;">.<br>.</div><div class="autogrow-textarea-mirror" style="display: none; word-wrap: break-word; white-space: normal; padding: 6px 12px; width: 91px; font-family: &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px;">.<br>.</div>
+                  </div>
+                </div><!-- /.panel-body -->
+                <div class="panel-footer">
+                  <div class="btn-group">
+                    <button class="btn btn-link" type="button" id="verEnMapa"><i class="icon-map"></i></button>
+                  </div>
+                  <div class="pull-right">
+                    <button class="btn btn-primary" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Enviando" id="agregarVisita">Agregar</button>
+                  </div>
+                </div><!-- /.panel-footer -->
+              </div><!-- /.timeline-panel.panel -->
+            </li><!-- /.timeline-poster -->
+            <div id="panel-prestaciones">
+            </div>
+            <!-- /.timeline-item -->
+          </ul><!-- /.timeline -->
+        </div><!-- /.content-body -->
+        <!-- /.content-hero -->
+
+
+
+      </div><!-- /.content -->
+    </section><!-- /MAIN -->
+    <!-- modalPrueba -->
+
+
+    <!-- ============================================
+    FOOTER SECTION
+    =============================================== -->
+    <script src="scripts/sections/footer.js"></script>
+
+  </main><!-- /#MAIN -->
+
+
+  <!-- General Scripts-->
+  <script src="scripts/sections/scripts.js"></script>
+  <script src="scripts/sections/paciente.js"></script>
+  <script src="scripts/gps/gps.js"></script>
+</body>
+
+<!-- Mirrored from stilearning.com/items/preview/wrapkit/1.2/page-timeline.html by HTTrack Website Copier/3.x [XR&CO2014], Mon, 18 Dec 2017 13:33:35 GMT -->
+</html>
