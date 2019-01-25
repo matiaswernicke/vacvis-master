@@ -2,8 +2,10 @@
 $(function() { // shorthand $() for $( document ).ready()
   loadPatients();
   window.patientsIdsFromServer=[];
-  //addPatientsFromServer(1);
-  // refreshPacients
+
+
+derivarPendientes(); // Levantar los derivaciones pendientes
+//setTimeout (derivarPendientes(), 20000);
   $( "#refreshPacients" ).click(function() {
     patientsFromServer();
   });
@@ -44,7 +46,7 @@ function patientsFromServer(){
   $("#refreshPacients").button('loading');
   window.patientsIdsFromServer=[];
   addPatientsFromServer(1);
-  alert('patientsFromServer '+window.patientsIdsFromServer)
+  //alert('patientsFromServer '+window.patientsIdsFromServer)
 }
 function addPatientsFromServer(page){
   console.log(' addPatientsFromServer Url '+apiurl)
@@ -74,7 +76,7 @@ function managePatientsServer(xhr){
     console.log(' managePatientsServer = Url '+apiurl)
   for(patient in xhr.Patients){
     window.patientsIdsFromServer.push(xhr.Patients[patient].id);
-    alert('managePatientsServer '+window.patientsIdsFromServer)
+    //alert('managePatientsServer '+window.patientsIdsFromServer)
     flag=0;
     for(mpatient in window.memory.patients){
       if(xhr.Patients[patient].id==window.memory.patients[mpatient].id){// Si existe actualizo el paciente
@@ -93,8 +95,8 @@ function managePatientsServer(xhr){
         break;
       }
     }
-    console.log('Tipo paciente '+xhr.Patients[patient].id+'  '+xhr.Patients[patient].tipo_paciente);
-    if(flag==0){console.log('Creo el paciente '+xhr.Patients[patient].tipo_paciente);
+    //console.log('Tipo paciente '+xhr.Patients[patient].id+'  '+xhr.Patients[patient].tipo_paciente);
+    if(flag==0){//console.log('Creo el paciente '+xhr.Patients[patient].tipo_paciente);
       memory.patients.push({// Si no existe creo el paciente
       "id":xhr.Patients[patient].id,
       "name":xhr.Patients[patient].name,
@@ -127,7 +129,7 @@ function parsePacientes(patients){
   var paciente;
   for(patient in patients){
     paciente=patients[patient];
-    console.log('parsePacientes Paciente id = '+paciente.id+'  '+paciente.tipopaciente);
+    //console.log('parsePacientes Paciente id = '+paciente.id+'  '+paciente.tipopaciente);
     if(paciente.tipopaciente == '2'){var tipopaciente = 'PENDIENTE';var deriveImage = 'images/img/libre.svg'}
                                     else
                                     {var tipopaciente = '';var deriveImage = 'images/img/curved.svg'}
@@ -149,6 +151,58 @@ function parsePacientes(patients){
 
   }
 
+}
+
+// Matias
+function derivarPendientes(){
+  //alert('derivarPendientes nuevo');
+  const user = JSON.parse(getCookie("user"))
+  //console.log('url = '+apiurl+'api/prestadores/derivaciones');
+  //console.log('token = '+user.token);
+  var jqxhr = $.ajax({
+                  method: "GET",
+                  url: apiurl+'api/prestadores/derivaciones',
+                  headers: { 'Authorization': user.token}
+                })
+                .done(function(xhr) {
+                  //console.log('Respuesta Derivaciones ==> '+JSON.stringify(xhr));
+                  //console.log('Total derivaciones = '+xhr.total_items);
+                    var derivations =  xhr.derivaciones;
+                    var derivo;
+                    for(derivation in derivations){
+                      derivo = derivations[derivation];
+                      //console.log('drivacion x = '+JSON.stringify(derivo));
+                      if(derivo.tipo_derivacion == 'receptor'){ //emisor - receptor
+                        bootbox.dialog({
+                          size: "small",
+                          title: 'Derivaciones',
+                          message: '<p>Tiene Derivaciones pendientes de Aprobación</p><p>¿Desea ir a Aprobación de Derivaciones?</p>',
+                            buttons: {
+                              si:{
+                                label: 'Si',
+                                className: 'btn-success',
+                                callback: function(){window.location="aceptarDerivar.html"}
+                              },
+                              no:{
+                                label: 'No',
+                                className: 'btn-warning',
+                                callback: function(){}
+                              }
+                            }
+                        })
+                        break
+                        //console.log('Vale x = '+derivo.derivacion_id);
+                      }
+                      //console.log('drivacion = '+derivo.prestador_id+'  '+derivo.derivacion_id+'  '+derivo.paciente_id);
+                    }
+                  var derivarName = JSON.stringify(xhr);
+                  setCookie("derivarName", derivarName, 120);
+
+                })
+                .fail(function(xhr) {
+                  toastr.info('No se pudo leer las derivaciones pendientes');
+                  $("#refreshLoader").button('reset');
+                })
 }
 function addLoader(){
   return '<div class="panel fade in panel-default" data-init-panel="true" style="background: gainsboro;" id="pcloader"><div class="panel-body"><div class="search-result-item"><p class="text-center"><strong><i class="fa fa-spinner fa-spin fa-4x"></i></strong></p>        </div>        <!-- /.search-result-item -->    </div>    <!-- /.panel-body --></div>';

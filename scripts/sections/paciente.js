@@ -26,6 +26,7 @@ $(function() { // shorthand $() for $( document ).ready()
 
   loadPatient();
 
+
   $( "#agregarVisita" ).click(function() {
     agregarVisita(this);
   });verEnMapa
@@ -342,6 +343,7 @@ function agregarVisita(el){
 }
 
 //Matias 20190104
+
 /* Agregar una derivacion */
 function agregarDerivar(el){
 

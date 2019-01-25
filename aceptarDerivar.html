@@ -30,36 +30,27 @@ d<!DOCTYPE html>
                 <!-- Result control -->
                 <div class="panel fade in panel-default panel-fill" data-fill-color="true" data-init-panel="true">
                     <div class="panel-heading">
-                      <div class="row">
-                          <div class="col-lg-12">
-                            <div><h2>Derivar a :</div>
-                              <div class="row">
-                                  <div class="col-xs-12 bordered-right">
-                                      <div id="nombrePaciente"><h4 class="text-left">No selecciono paciente</h4></div>
-                                  </div><!-- /.cols -->
-                              </div><!-- /.row -->
-                            </div>                      <!-- /.row -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="input-group input-group-in no-bg no-border">
+                                    <div class="input-group-addon no-padding pr-2x"><i class="icon-magnifier"></i></div>
+                                    <input id="search-box" class="form-control no-padding" placeholder="Buscar">
+                                </div>
+                            </div>
+                            <!-- /.cols -->
+
+                            <!-- /.cols -->
+                        </div>
+                        <!-- /.row -->
                     </div>
                     <!-- /.panel-heading -->
-
-                    <div class="row">
-                      <div class="col-xs-12 bordered-right">
-                        <div><h2>Motivo</div>
-                      </div><!-- /.cols -->
-                      </div><!-- /.row -->
-                      <div class="row">
-                        <div class="col-xs-12 bordered-right">
-                          <h4><input id="motivo" class="form-control" placeholder="Motivo"></h4>
-                        </div><!-- /.cols -->
-                      </div><!-- /.row -->
                 </div>
-              </div>
                 <!-- /.panel -->
-                <div class="search-result">
 
+                <div class="search-result">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div id="titulo"><h2>Seleccione un prestador</div>
+                            <div id="titulo"><h2>Derivaciones Pendientes</div>
 
                               <!-- <button class="btn btn-link" type="button" id="refreshPacients" data-loading-text="<i class='fa fa-refresh fa-spin '></i> <small>Cargando...</small>"><i class="fa fa-refresh"></i></button> -->
                             </h2>
@@ -88,7 +79,7 @@ d<!DOCTYPE html>
 
 
   <script src="scripts/sections/scripts.js"></script>
-  <script src="scripts/sections/pacienteDerivar.js"></script>
+  <script src="scripts/sections/aceptarDerivar.js"></script>
 </body>
 
 <!-- Mirrored from stilearning.com/items/preview/wrapkit/1.2/page-timeline.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 18 Dec 2017 13:33:35 GMT -->

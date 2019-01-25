@@ -10,31 +10,8 @@ function login(xhr){
   var keepSignin = ($('#keepSignin').val() == $('#keepSignin').val() ? {"keepSignin":true,"datas":$('#signinForm').serializeArray()} : {"keepSignin":false});
   var user=JSON.stringify({"expires_in":expires_in,"token":token,"userName":userName,"prestador_id":prestador_id,"prestador_name":prestador_name,"prestador_email":prestador_email,"prestador_alias":prestador_alias,"keepSignin":keepSignin});
   setCookie("user", user, 120);
-  prestadores(); // Levantar los prestadores a memoria
+  setCookie("derivarName", '', 120);
   window.location="pacientes.html";
-}
-// Matias 20190103
-function prestadores(){
-  //alert('prestadores nuevo');
-  const user = JSON.parse(getCookie("user"))
-  console.log('url = '+apiurl+'api/prestadores');
-  console.log('token = '+user);
-  console.log('token = '+user.token);
-  var jqxhr = $.ajax({
-                  method: "GET",
-                  url: apiurl+'api/prestadores',
-                  headers: { 'Authorization': user.token}
-                })
-                .done(function(xhr) {
-                  console.log('Respuesta ==> '+JSON.stringify(xhr));
-                  var derivarName = JSON.stringify({"Prestadores": [{"id": 2,"name": "DANIEL GIMENEZ","lastname": null,"dir": null,"location": null,"phone": null,"dni": null,"prestacion": "1","email": "gimenezdaniel1980@gmail.com","alias": "DANIEL GIMENEZ"},{"id": 3,"name": "MIGUEL NAVARRO","lastname": null,"dir": null,"location": null,"phone": null,"dni": null,"prestacion": "1","email": "migueyguana1983@gmail.com","alias": "MIGUEL NAVARRO"}]});
-                  setCookie("derivarName", derivarName, 120);
-
-                })
-                .fail(function(xhr) {
-                  toastr.info('No se pudo leer los prestadores');
-                  $("#refreshLoader").button('reset');
-                })
 }
 
 // un arreglo con visits {sync,pending}
