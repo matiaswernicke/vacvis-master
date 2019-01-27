@@ -46,7 +46,7 @@ function derivaciones(){
                   var cantidad = 0;
                   for(derivation in derivations){
                     derivo = derivations[derivation];
-                    if(derivo.tipo_derivacion == 'receptor'){
+                    if(derivo.tipo_derivacion == 'receptor' && derivo.estado == 'Pendiente'){
                       //console.log('drivacion = '+derivo.prestador_id+'  '+derivo.derivacion_id+'  '+derivo.paciente.id+' '+derivo.paciente.lastname+' '+derivo.paciente.name);
                       //console.log('Paciente = '+paciente);
                       var cantidad = parseInt(cantidad) + parseInt(1);
@@ -81,64 +81,68 @@ function derivaciones(){
 }
 
 
-function aceptarDerivacion(id){
-    var derivarPrestadorId=document.getElementById("derPres").value;
-    var pid=getQueryVariableTranslated("id");
-    var motivo=document.getElementById("motivo").value;
-    $(el).button('loading');
-    if(derivarPrestadorId > 0){
+function aprobarDerivacion(id){
+    if(id > 0){
       //------- grabarDerivar
-      var datas=JSON.stringify({"motivo":motivo,"prestador_derivado_id": derivarPrestadorId,"paciente_id":pid});
+      //var datas=JSON.stringify({"motivo":motivo,"prestador_derivado_id": derivarPrestadorId,"paciente_id":pid});
       console.log('Autorization = '+user.token);
-      console.log(datas);
       var jqxhr = $.ajax({
                     method: "POST",
-                    url: apiurl+'api/prestadores/derivar',
-                    headers: { 'Authorization': user.token, 'Content-Type':"application/json" },
-                    data: datas
+                    url: apiurl+'api/prestadores/derivaciones/'+id+'/aprobar',
+                    headers: { 'Authorization': user.token, 'Content-Type':"application/json" }
                   })
                   .done(function(xhr) {
                     console.log('Done => '+JSON.stringify(xhr));
                     //$( "#pcloader" ).remove();
                     // Agregar comentario a la visita como sync
-                    toastr.success('Paciente derivado correctamente');
-                    //addCommentToMemory(xhr,true);
-                    //addCommentToHtml(xhr);
+                    toastr.success('Derivación confirmada correctamente');
                     console.log(JSON.stringify(xhr));
                     $(el).button('reset');
                     window.location="pacientes.html";
-                    //testIfPendient();
                   })
                   .fail(function(xhr) {console.log(JSON.stringify(xhr));
                     console.log('Fail => '+JSON.stringify(xhr));
                     // Agregar comentario a la visita pendiente sync
                     //addCommentToMemory({'pid':pid,'data':datas},false);
-                    toastr.info('El Paciente No se pudo derivar. Intente mas tarde');
+                    toastr.info('No se pudo realizar la confirmación de la derivación. Intente mas tarde');
                   })
                   .always(function(){
-                    //document.getElementById("nombre").value = '';
-                    //document.getElementById("apellido").value = '';
-                    //document.getElementById("nroDoc").value = '';
                     console.log('Siempre');
-
-                    $(el).button('reset');
+                    //$(el).button('reset');
                   })
                   //------- Fin grabarDerivar
       //alert('Termino grabarDerivar nuevo '+derivarPrestadorId+'  '+pid+'   '+el);
-    }else{
-      bootbox.alert({
-        size: "small",
-        title: 'Error en la carga',
-        message: 'Debe seleccionar un prestador',
-          buttons: {
-            ok:{
-              label: 'Aceptar',
-              className: 'btn-success'
-            }
-          },
-        callback: function(){$(el).button('reset');}
-      })
+    }
 
+}
+
+function cancelarDerivacion(id){
+    if(id > 0){
+      console.log('Autorization = '+user.token);
+      var jqxhr = $.ajax({
+                    method: "POST",
+                    url: apiurl+'api/prestadores/derivaciones/'+id+'/cancelar',
+                    headers: { 'Authorization': user.token, 'Content-Type':"application/json" }
+                  })
+                  .done(function(xhr) {
+                    console.log('Done => '+JSON.stringify(xhr));
+                    toastr.success('Derivación cancelada correctamente');
+                    console.log(JSON.stringify(xhr));
+                    $(el).button('reset');
+                    window.location="pacientes.html";
+                  })
+                  .fail(function(xhr) {console.log(JSON.stringify(xhr));
+                    console.log('Fail => '+JSON.stringify(xhr));
+                    // Agregar comentario a la visita pendiente sync
+                    //addCommentToMemory({'pid':pid,'data':datas},false);
+                    toastr.info('No se pudo realizar la cancelación de la derivación. Intente mas tarde');
+                  })
+                  .always(function(){
+                    console.log('Siempre');
+                    //$(el).button('reset');
+                  })
+                  //------- Fin grabarDerivar
+      //alert('Termino grabarDerivar nuevo '+derivarPrestadorId+'  '+pid+'   '+el);
     }
 
 }
@@ -155,19 +159,22 @@ var TEMPLATE_PANEL_ACEPTARDERIVAR = ''
 +'                </div>'
 +'                <!-- /.media-left -->'
 +'                <div class="media-body">'
-+'                    <p class="media-heading"><strong>{FIRST_NAME} {LAST_NAME} </strong>'
++'                    <p class="media-heading"><strong>{FIRST_NAME} {LAST_NAME} {DERIVAR_ID}</strong>'
 +'                        <br><small class="text-muted"><i class="fa fa-map-marker fa-fw"></i>{DIR}</small>'
 //+'                        <br><p style="color:#FF0000";><b>{TIPO_PACIENTE}</b></p>'
 +'                <!-- /.media-body -->'
 +'                </div>'
 // Matias 20190116
 +'               <div class="media-right">'
-+'                    <a href="javascript:aceptarDerivacion({DERIVAR_ID})" class="timeline-avatar kit-avatar kit-avatar-36">'
-+'                        <img class="media-object" src="{DERIVE_IMAGE}" title="Derivar">'
++'                    <a href="javascript:aprobarDerivacion({DERIVAR_ID})" class="timeline-avatar kit-avatar kit-avatar-36">'
++'                        <img class="media-object" src="images/img/ok.svg" title="Derivar">'
 +'                    </a>'
 +'               </div>'
-// -----------------------
-//+'            <p><strong>Prestaciones:</strong> {PRESTACIONES} </p>'
++'               <div class="media-right">'
++'                    <a href="javascript:cancelarDerivacion({DERIVAR_ID})" class="timeline-avatar kit-avatar kit-avatar-36">'
++'                        <img class="media-object" src="images/img/cancel.svg" title="Derivar">'
++'                    </a>'
++'               </div>'
 +'        </div>'
 +'        <!-- /.search-result-item -->'
 +'    </div>'

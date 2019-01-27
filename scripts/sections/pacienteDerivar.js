@@ -140,7 +140,7 @@ var TEMPLATE_PANEL_ACEPTARDERIVAR = ''
 // Matias 20190116
 +'               <div class="media-right">'
 +'                    <a href="javascript:agregarDerivar({PRESTADOR_ID})" class="timeline-avatar kit-avatar kit-avatar-36">'
-+'                        <img class="media-object" src="{DERIVE_IMAGE}" title="Derivar">'
++'                        <img class="media-object" src="images/img/ok.svg" title="Derivar">'
 +'                    </a>'
 +'               </div>'
 // -----------------------
