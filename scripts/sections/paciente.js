@@ -7,7 +7,7 @@ $(function() { // shorthand $() for $( document ).ready()
   //editCommentButton
 
   var pid=getQueryVariableTranslated("id");
-  alert('Paciente '+pid)
+  //alert('Paciente '+pid)
   if(pid > 9999999){
     bootbox.dialog({
       message: 'No se puede realizar prestaciones sobre pacientes pendientes.',
@@ -349,7 +349,7 @@ function agregarDerivar(el){
 
     var derivarPrestadorId=document.getElementById("derPres").value;
     var pid=getQueryVariableTranslated("id");
-    alert('Derivar nuevo '+derivarPrestadorId+'  '+pid+'   '+el);
+    //alert('Derivar nuevo '+derivarPrestadorId+'  '+pid+'   '+el);
     $(el).button('loading');
 }
 // fin 20190104
