@@ -163,15 +163,15 @@ function parse0LessThan10(int){
 	if(int<10){return"0"+int;}else{return int;}
 }
 function distanciaDeRefernciaEnMts(){
-	var pid=getQueryVariableTranslated("id");
+	var pid=getQueryVariableTranslated("id")
 	var paciente=searchPatientInArr(pid);
-	return getDistanceFromLatLonInMts(paciente.geo.latitud,paciente.geo.longitud,window.gpslocation.latitude,window.gpslocation.longitude);
+ 	return getDistanceFromLatLonInMts(paciente.geo.latitud,paciente.geo.longitud,window.gpslocation.latitude,window.gpslocation.longitude);
 	//return getDistanceFromLatLonInMts(paciente.geo.latitud,paciente.geo.longitud,paciente.geo.latitud,paciente.geo.longitud); //Para pruebas
 }
 function getGpsDir(){
 	var distancia= "a "+distanciaDeRefernciaEnMts()+" metros de la referencia";
-	//return {'dir':distancia,'lat':window.gpslocation.latitude,'lng':window.gpslocation.longitude}
-	return {'dir':distancia,'lat':'1','lng':'1'}
+	return {'dir':distancia,'lat':window.gpslocation.latitude,'lng':window.gpslocation.longitude}
+	//return {'dir':distancia,'lat':'1','lng':'1'} // Para pruebas
 }
 
 function getDistanceFromLatLonInMts(lat1,lon1,lat2,lon2) {

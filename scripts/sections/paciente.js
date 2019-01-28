@@ -49,7 +49,7 @@ $(function() { // shorthand $() for $( document ).ready()
 function loadPatient(){
   var pid=getQueryVariableTranslated("id");
   var patient=searchPatientInArr(pid);
-  console.log('Matias ==>'+pid+"--"+JSON.stringify(patient)+'Last Sync hoy '+patient.lastSync);
+  //console.log('Matias ==>'+pid+"--"+JSON.stringify(patient)+'Last Sync hoy '+patient.lastSync);
   if(patient.lastSync!=null){// busco el paciente en el array
     if(needsSync(patient.lastSync)){
       console.log('loadPatient paso 1');
@@ -121,7 +121,6 @@ function parsePaciente(paciente){
     //'{ULTIMA_PRESTACION}': parseDate(paciente.ultima_prestacion),
     //'{PROXIMA_PRESTACION}': parseDate(paciente.proxima_prestacion),
     '{PRESTACIONES}': parsePrestacionesInput(paciente.prestaciones),
-    '{DERIVAR}': parseDerivarInput(),
     '{TELEFONO}': paciente.phone,
     '{DNI}': paciente.dni
   }
@@ -290,7 +289,7 @@ function agregarVisita(el){
     		        "longitud": lng
     		    }
           });
-      //console.log(apiurl+'api/patients/'+pid+'/visits/new');
+      console.log(apiurl+'api/patients/'+pid+'/visits/new');
       console.log(datas);
       var jqxhr = $.ajax({
                       method: "POST",
@@ -341,8 +340,6 @@ function agregarVisita(el){
     }
   }
 }
-
-//Matias 20190104
 
 /* Agregar una derivacion */
 function agregarDerivar(el){
@@ -463,21 +460,3 @@ var PANEL_DATOS_PACIENTE=''
 +'                <label class="control-label" for="mask-datetime">Prestaciones</label>'
 +'                {PRESTACIONES}'
 +'              </div><!--/form-group-->'
-// Matias 20190103
-+'              <div class="form-group">'
-+'                <label class="control-label" for="mask-derivar">Selecione un Prestador</label>'
-+'                {DERIVAR}'
-+'              </div><!--/form-group-->'
-// Matias 20190104
-+'<div class="pull-right">'
-+'  <button class="btn btn-primary" data-loading-text="<i class='+"'fa fa-spinner fa-spin'"+ '></i> Derivando" id="idDerivar">Derivar</button>'
-+'</div>'
-// Fin 20190104
-
-+'              <!--/form-group-->'
-+'            </form><!--/form-->'
-+'          </div><!-- /panel-body -->'
-+'        </div>'
-+'      </div>'
-+'    </div><!-- /.media-body -->'
-+'  </div><!-- /.float-bar -->'
