@@ -138,7 +138,8 @@ function parsePacientes(patients){
     paciente=patients[patient];
     console.log('parsePacientes Paciente id = '+paciente.id+'  '+paciente.tipopaciente);
     //if(paciente.tipopaciente == '2'){var tipopaciente = 'PENDIENTE';var deriveImage = 'images/img/libre.svg'}
-    if(paciente.id > 100000000 ){var tipopaciente = 'PENDIENTE';var deriveImage = 'images/img/libre.svg'}
+    //10.000.0000
+    if(paciente.id > 9999999 ){var tipopaciente = 'PENDIENTE';var deriveImage = 'images/img/libre.svg'}
                                     else
                                     {var tipopaciente = '';var deriveImage = 'images/img/curved.svg'}
     template_panel_paciente_props = {
