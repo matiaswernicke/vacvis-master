@@ -100,8 +100,8 @@ function aprobarDerivacion(id){
                     $(el).button('reset');
                     window.location="pacientes.html";
                   })
-                  .fail(function(xhr) {console.log(JSON.stringify(xhr));
-                    console.log('Fail => '+JSON.stringify(xhr));
+                  .fail(function(xhr) {//console.log(JSON.stringify(xhr));
+                    //console.log('Fail (Aprobar) => '+xhr.Message);
                     // Agregar comentario a la visita pendiente sync
                     //addCommentToMemory({'pid':pid,'data':datas},false);
                     toastr.info('No se pudo realizar la confirmación de la derivación. Intente mas tarde');
@@ -132,7 +132,7 @@ function cancelarDerivacion(id){
                     window.location="pacientes.html";
                   })
                   .fail(function(xhr) {console.log(JSON.stringify(xhr));
-                    console.log('Fail => '+JSON.stringify(xhr));
+                    console.log('Fail (Cancelar) => '+JSON.stringify(xhr));
                     // Agregar comentario a la visita pendiente sync
                     //addCommentToMemory({'pid':pid,'data':datas},false);
                     toastr.info('No se pudo realizar la cancelación de la derivación. Intente mas tarde');

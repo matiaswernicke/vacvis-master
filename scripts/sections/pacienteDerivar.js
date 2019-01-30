@@ -92,12 +92,13 @@ function agregarDerivar(prestador){
                     console.log('Done => '+JSON.stringify(xhr));
                     toastr.success('Paciente derivado correctamente');
                     console.log(JSON.stringify(xhr));
-                    //$(el).button('reset');
-                    window.location="pacientes.html";
+                    //devolver con un get de marca para refrescar
+                    window.location="pacientes.html?senal=1";
                   })
-                  .fail(function(xhr) {console.log(JSON.stringify(xhr));
-                    console.log('Fail => '+JSON.stringify(xhr));
-                    toastr.info('El Paciente No se pudo derivar. Intente mas tarde');
+                  .fail(function(xhr) {//console.log(JSON.stringify(xhr));
+                    var mensaje = JSON.parse(xhr.responseText)
+                    //console.log('Fail(agregarDerivar) => '+mensaje.Message);
+                    toastr.info(mensaje.Message);
                   })
                   .always(function(){
                     console.log('Siempre');

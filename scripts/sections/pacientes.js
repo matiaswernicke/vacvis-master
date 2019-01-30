@@ -1,5 +1,10 @@
 // traigo user desde antes
 $(function() { // shorthand $() for $( document ).ready()
+
+  var senal=getQueryVariableTranslated("senal");
+  //alert('senal = '+senal)
+  if(senal == 1){patientsFromServer()}
+
   loadPatients();
   window.patientsIdsFromServer=[];
 
@@ -26,6 +31,7 @@ function filterSearchBox(text){
     }
   });
 }
+
 function openPacientsInMap(){
   window.location='gps.html';
 }
@@ -44,6 +50,7 @@ function loadPatients(){
 }
 function patientsFromServer(){
   $("#refreshPacients").button('loading');
+  //alert('refresca')
   window.patientsIdsFromServer=[];
   addPatientsFromServer(1);
   //alert('patientsFromServer '+window.patientsIdsFromServer)
@@ -124,13 +131,14 @@ function managePatientsServer(xhr){
 }
 // Entorno visual
 function parsePacientes(patients){
-  console.log('parsePacientes');
+  //console.log('parsePacientes '+JSON.stringify(patients));
   var template_panel_paciente_props;
   var paciente;
   for(patient in patients){
     paciente=patients[patient];
-    //console.log('parsePacientes Paciente id = '+paciente.id+'  '+paciente.tipopaciente);
-    if(paciente.tipopaciente == '2'){var tipopaciente = 'PENDIENTE';var deriveImage = 'images/img/libre.svg'}
+    console.log('parsePacientes Paciente id = '+paciente.id+'  '+paciente.tipopaciente);
+    //if(paciente.tipopaciente == '2'){var tipopaciente = 'PENDIENTE';var deriveImage = 'images/img/libre.svg'}
+    if(paciente.id > 100000000 ){var tipopaciente = 'PENDIENTE';var deriveImage = 'images/img/libre.svg'}
                                     else
                                     {var tipopaciente = '';var deriveImage = 'images/img/curved.svg'}
     template_panel_paciente_props = {
@@ -157,8 +165,6 @@ function parsePacientes(patients){
 function derivarPendientes(){
   //alert('derivarPendientes nuevo');
   const user = JSON.parse(getCookie("user"))
-  //console.log('url = '+apiurl+'api/prestadores/derivaciones');
-  //console.log('token = '+user.token);
   var jqxhr = $.ajax({
                   method: "GET",
                   url: apiurl+'api/prestadores/derivaciones',
@@ -166,13 +172,13 @@ function derivarPendientes(){
                 })
                 .done(function(xhr) {
                   //console.log('Respuesta Derivaciones ==> '+JSON.stringify(xhr));
-                  //console.log('Total derivaciones = '+xhr.total_items);
+                  //console.log('Total derivaciones = '+xhr.total_items+'  '+user.prestador_id);
                     var derivations =  xhr.derivaciones;
                     var derivo;
                     for(derivation in derivations){
                       derivo = derivations[derivation];
                       //console.log('drivacion x = '+JSON.stringify(derivo));
-                      if(derivo.tipo_derivacion == 'receptor'){ //emisor - receptor
+                      if(derivo.tipo_derivacion == 'receptor' && derivo.estado == 'Pendiente' ){ //emisor - receptor
                         bootbox.dialog({
                           size: "small",
                           title: 'Derivaciones',

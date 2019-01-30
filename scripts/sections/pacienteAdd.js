@@ -76,13 +76,11 @@ function agregarPaciente(el){
                   })
                   .done(function(xhr) {
                     console.log('Done => '+JSON.stringify(xhr));
-                    //$( "#pcloader" ).remove();
-                    // Agregar comentario a la visita como sync
+
                     toastr.success('Paciente agregado correctamente');
-                    //addCommentToMemory(xhr,true);
-                    //addCommentToHtml(xhr);
-                    console.log(JSON.stringify(xhr));
+                    //console.log(JSON.stringify(xhr));
                     $(el).button('reset');
+                    window.location="pacientes.html?senal=1";
                     //testIfPendient();
                   })
                   .fail(function(xhr) {console.log(JSON.stringify(xhr));

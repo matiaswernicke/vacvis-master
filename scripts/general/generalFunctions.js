@@ -72,6 +72,7 @@ function checkCookie(){ // Check if cookies are enable
 function generalErrors(xhr){
 	console.log(JSON.stringify(xhr));
 	if(xhr.status==401){// No esta logueado
+
 		exitSession();
 	}
 	toastr.error('Sin conexión');
