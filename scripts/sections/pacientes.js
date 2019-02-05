@@ -56,7 +56,7 @@ function patientsFromServer(){
   //alert('patientsFromServer '+window.patientsIdsFromServer)
 }
 function addPatientsFromServer(page){
-  console.log(' addPatientsFromServer Url '+apiurl)
+  console.log(' addPatientsFromServer Url '+apiurl+'api/patients?page='+page+'&pagesize=5')
   $("#pacients-container").append(addLoader());
   var jqxhr = $.ajax({
                   method: "GET",
@@ -121,7 +121,9 @@ function managePatientsServer(xhr){
       "lastSync":null
     })}
   }// Fin recorro los pacientes de la consulta
-  if(xhr.Pagination.current_page>=xhr.Pagination.total_pages){
+  console.log('Pagintaion = '+xhr.Pagination.current_page+'     '+xhr.Pagination.total_pages);
+  if(xhr.Pagination.current_page>=xhr.Pagination.total_pages){//
+  //if(xhr.Pagination.current_page>=2){
     // Fin recorrer usuarios
     $("#refreshPacients").button('reset');
     endLoadingPatients();
@@ -131,7 +133,7 @@ function managePatientsServer(xhr){
 }
 // Entorno visual
 function parsePacientes(patients){
-  //console.log('parsePacientes '+JSON.stringify(patients));
+  console.log('parsePacientes '+JSON.stringify(patients));
   var template_panel_paciente_props;
   var paciente;
   for(patient in patients){
@@ -142,6 +144,10 @@ function parsePacientes(patients){
     if(paciente.id > 9999999 ){var tipopaciente = 'PENDIENTE';var deriveImage = 'images/img/libre.svg'}
                                     else
                                     {var tipopaciente = '';var deriveImage = 'images/img/curved.svg'}
+
+    // 20190205 Matias
+    if(paciente.id < 9999999 && paciente.derivable != 1){var tipopaciente = 'DERIVACIÓN PENDIENTE';var deriveImage = 'images/img/libre.svg'}
+
     template_panel_paciente_props = {
     	'{PACIENTE_ID}': paciente.id,
       '{FIRST_NAME}': paciente.name,
