@@ -2,7 +2,7 @@ $( document ).on( 'submit', '#signinForm', function(e){
     e.preventDefault();
     var $button = $("#signinForm [type=submit]");
     $button.button('loading');
-    //alert($('#keepSignin').val());
+    alert($('#keepSignin').val());
     if($('#username').val()!="" &&  $('#password').val()!="" ){
       var datas = $(this).serializeArray();
       var jqxhr = $.ajax({
