@@ -31,18 +31,20 @@
     <preference name="exit-on-suspend"            value="false" />          <!-- ios: if set to true, app will terminate when home button is pressed -->
     <preference name="show-splash-screen-spinner" value="true" />           <!-- ios: if set to false, the spinner won't appear on the splash screen during app loading -->
     <preference name="auto-hide-splash-screen"    value="true" />           <!-- ios: if set to false, the splash screen must be hidden using a JavaScript API -->
-
+    <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyAN1MZhpJ6o5-tOABdfUurxrHapSvQO-70" /> <!-- Matias 20190615 -->
+    <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyCLbJHW9Ira14XC1MWHxu5wlPTYrugAb1w" /> <!-- Matias 20190615 -->
 
 
 	<!-- GPS -->
   <plugin name="cordova-plugin-mauron85-background-geolocation"/>
-	<!-- Core plugins 1.4.5 -->
+	<!-- Core plugins 1.4.5
     <plugin name="cordova-plugin-googlemaps">
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyAN1MZhpJ6o5-tOABdfUurxrHapSvQO-70" />
         <variable name="API_KEY_FOR_IOS" value="AIzaSyCLbJHW9Ira14XC1MWHxu5wlPTYrugAb1w" />
         <variable name="LOCATION_WHEN_IN_USE_DESCRIPTION" value="My custom when in use message" />
         <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="My custom always usage message" />
-    </plugin>
+    </plugin> Anulado el 20190615
+-->
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
 	<!-- Define app icon for each platform. -->
 	<icon src="img/icon.png" />
