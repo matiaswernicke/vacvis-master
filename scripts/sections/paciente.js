@@ -41,7 +41,7 @@ $(function() { // shorthand $() for $( document ).ready()
 
   $("#id").click(function(){
       agregar(this);
-      alert('Fin de ')
+      //alert('Fin de ')
   });
 
 });
